@@ -1,0 +1,47 @@
+﻿<?xml version = "1.0" encoding = "utf-8" ?>
+<hibernate-mapping xmlns = "urn:nhibernate-mapping-2.2"
+                   assembly = "NHibernateDemoApp" namespace = "NHibernateDemoApp">
+
+  <class name = "Customer">
+
+    <id name = "Id">
+      <generator class = "guid.comb"/>
+    </id>
+
+    <property name = "FirstName"/>
+    <property name = "LastName"/>
+    <property name = "AverageRating"/>
+    <property name = "Points"/>
+    <property name = "HasGoldStatus"/>
+    <property name = "MemberSince" />
+    <property name = "CreditRating" type = "CustomerCreditRating"/>
+
+    <component name = "Address">
+      <property name = "Street"/>
+      <property name = "City"/>
+      <property name = "Province"/>
+      <property name = "Country"/>
+    </component>
+
+    <!--<set name = "Orders" table = "`Order`">
+      <key column = "CustomerId"/>
+      <one-to-many class = "Order"/>
+      cascade =none // remove parent and remove Id in child
+      cascade =all-delete-orphan // remove parent and remove  child
+      cascade =all //  saves, updates, and deletes
+      
+    </set>-->
+
+    <!--<set name = "Orders" table = "`Order`" cascade = "all">
+      <key column = "CustomerId"/>
+      <one-to-many class = "Order" />
+    </set>-->
+
+
+    <bag name="Orders"  cascade="all-delete-orphan" lazy="false">
+      <key column="CustomerId"/>
+      <one-to-many class="Order"/>
+    </bag>
+
+  </class>
+</hibernate-mapping>

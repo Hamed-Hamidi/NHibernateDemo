@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="NHibernateDemoApp" namespace="NHibernateDemoApp">
+
+
+  <class name="Product">
+    <id name="Id">
+      <generator class="native" />
+    </id>
+    <property name="Name" />
+   
+
+    <set name = "Orders" table = "`Order`" cascade = "all" lazy="false">
+      <key column = "ProductId"/>
+      <one-to-many class = "Order" />
+    </set>
+
+  </class>
+</hibernate-mapping>

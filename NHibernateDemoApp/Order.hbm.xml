@@ -1,0 +1,25 @@
+﻿<?xml version = "1.0" encoding = "utf-8" ?>
+<hibernate-mapping xmlns = "urn:nhibernate-mapping-2.2" assembly = "NHibernateDemoApp"
+                   namespace = "NHibernateDemoApp">
+
+  <class name = "Order" table = "`Order`">
+
+    <id name = "Id">
+      <generator class = "guid.comb"/>
+    </id>
+
+    <property name = "Ordered"/>
+    <property name = "Shipped"/>
+
+    <component name = "ShipTo">
+      <property name = "Street"/>
+      <property name = "City"/>
+      <property name = "Province"/>
+      <property name = "Country"/>
+    </component>
+   
+    <!--<many-to-one name = "Customer" column = "CustomerId"  lazy="false" />
+    <many-to-one name = "Product" column = "ProductId"  lazy="false" />-->
+
+  </class>
+</hibernate-mapping>
