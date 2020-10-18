@@ -27,6 +27,10 @@ namespace NHibernateDemoApp
                   session.Save(CreateCustomer());
                   session.Save(CreateProduct());
 
+
+
+
+
                       var customer =session.Query<Customer>().FirstOrDefault();
                       var pro = session.Query<Product>().FirstOrDefault();
                      // customer.LastName = "hamed";
